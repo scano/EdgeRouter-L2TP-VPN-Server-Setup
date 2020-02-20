@@ -10,19 +10,19 @@ Need customize:
 - SHARED-SECRET
 - ROUTER-IP
 - IP-POOL-START
-- IP-POOL-END>
+- IP-POOL-END
 
 Be sure that IP-POOL-START and IP-POOL-END no interfer on local network IPs.
 
 My example on network 10.0.0.1/24 with a DHCP in range 10.0.0.32 to 10.0.0.199.
 Assuming that internet connection is on *eth0*
 
-USER: vpnuser
-PASSWORD: vpnpass
-SHARED-SECRET: thesecret
-ROUTER-IP: 10.0.0.1
-IP-POOL-START: 10.0.0.200
-IP-POOL-END: 10.0.0.249
+- USER: vpnuser
+- PASSWORD: vpnpass
+- SHARED-SECRET: thesecret
+- ROUTER-IP: 10.0.0.1
+- IP-POOL-START: 10.0.0.200
+- IP-POOL-END: 10.0.0.249
 
 Access to router via ssh:
 
@@ -58,22 +58,22 @@ set firewall name WAN_LOCAL rule 60 log disable
 set firewall name WAN_LOCAL rule 60 protocol udp
 
 set vpn l2tp remote-access ipsec-settings authentication mode pre-shared-secret
-set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret <SHARED-SECRET>
+set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret SHARED-SECRET
 
 set vpn l2tp remote-access authentication mode local
-set vpn l2tp remote-access authentication local-users username <USER> password <PASSWORD>
+set vpn l2tp remote-access authentication local-users username USER password PASSWORD
 
-set vpn l2tp remote-access client-ip-pool start <IP-POOL-START>
-set vpn l2tp remote-access client-ip-pool stop <IP-POOL-END>
+set vpn l2tp remote-access client-ip-pool start IP-POOL-START
+set vpn l2tp remote-access client-ip-pool stop IP-POOL-END
 
-set vpn l2tp remote-access dns-servers server-1 <ROUTER-IP>
+set vpn l2tp remote-access dns-servers server-1 ROUTER-IP
 set vpn l2tp remote-access dns-servers server-2 1.1.1.1
 
 set vpn l2tp remote-access outside-address 0.0.0.0
 
 set vpn ipsec ipsec-interfaces interface eth0
 
-set service dns forwarding options "listen-address=<ROUTER-IP>"
+set service dns forwarding options "listen-address=ROUTER-IP"
 
 commit ; save
 
