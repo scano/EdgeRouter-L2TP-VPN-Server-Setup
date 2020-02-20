@@ -5,12 +5,12 @@ Setup a L2TP VPN Server with static DNS mapping fixed allowing to resolve from V
 Firmware version: 2.0.8
 
 Need customize:
-  <USER>
-  <PASSWORD>
-  <SHARED-SECRET>
-  <ROUTER-IP>
-  <IP-POOL-START>
-  <IP-POOL-END>
+- USER
+- PASSWORD
+- SHARED-SECRET
+- ROUTER-IP
+- IP-POOL-START
+- IP-POOL-END>
 
 Be sure that IP-POOL-START and IP-POOL-END no interfer on local network IPs.
 
